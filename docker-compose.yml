@@ -4,4 +4,23 @@ services:
     builder:
         build: .
         image: bootstrap-vue-builder
-
+        command: yarn watch
+        volumes:
+            - ./lib:/bootstrap-vue/lib
+    docs:
+        image: bootstrap-vue-builder
+        command: yarn docs-dev
+        volumes:
+            - ./docs:/bootstrap-vue/docs
+            - ./lib:/bootstrap-vue/lib
+        ports:
+            - 3000:3000
+        environment:
+            HOST: 0.0.0.0
+            PORT: 3000
+    tests:
+        image: bootstrap-vue-builder
+        command: yarn test-dev
+        volumes:
+            - ./tests:/bootstrap-vue/tests
+            - ./lib:/bootstrap-vue/lib
