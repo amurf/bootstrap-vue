@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+    builder:
+        build: .
+        image: bootstrap-vue-builder
+
