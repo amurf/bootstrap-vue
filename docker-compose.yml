@@ -3,12 +3,12 @@ version: "2"
 services:
     builder:
         build: .
-        image: bootstrap-vue-builder
+        image: bootstrap-vue
         command: yarn watch
         volumes:
             - ./lib:/bootstrap-vue/lib
     docs:
-        image: bootstrap-vue-builder
+        image: bootstrap-vue
         command: yarn docs-dev
         volumes:
             - ./docs:/bootstrap-vue/docs
@@ -19,8 +19,8 @@ services:
             HOST: 0.0.0.0
             PORT: 3000
     tests:
-        image: bootstrap-vue-builder
-        command: yarn test-dev
+        image: bootstrap-vue
+        command: yarn test
         volumes:
-            - ./tests:/bootstrap-vue/tests
+            - ./tests:/bootstrap-vue/tests:ro
             - ./lib:/bootstrap-vue/lib
